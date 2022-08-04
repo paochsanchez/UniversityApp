@@ -1,29 +1,67 @@
 class StudentsController < ApplicationController
-    def index
-        @students = Student.all
-    end
+  before_action :set_student, only: %i[ show edit update destroy ]
 
-    def show
-        @student = Student.find(params[:id])
-    end
+  # GET /students or /students.json
+  def index
+    @students = Student.all
+  end
 
-    def new
-        @student = Student.new
-    end
+  # GET /students/1 or /students/1.json
+  def show
+  end
 
-    def create
-        @student = Student.new(student_params)
-        if @student.save
-        #session[:user_id] = @student.id
+  # GET /students/new
+  def new
+    @student = Student.new
+  end
+
+  # GET /students/1/edit
+  def edit
+  end
+
+  # POST /students or /students.json
+  def create
+    @student = Student.new(student_params)
+
+    respond_to do |format|
+      if @student.save
         flash[:notice] = "Welcome to the UniApp #{@student.name}, you have succesfully signed up"
         redirect_to students_path
-        else
+      else
         render 'new'
-        end
+      end
+    end
+  end
+
+  # PATCH/PUT /students/1 or /students/1.json
+  def update
+    respond_to do |format|
+      if @student.update(student_params)
+        flash[:notice] = "#{@student.name}, you have succesfully updated"
+        redirect_to students_path
+
+      else
+        render 'edit'
+      end
+    end
+  end
+
+  # DELETE /students/1 or /students/1.json
+  def destroy
+    @student.destroy
+
+    respond_to do |format|
+      format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    def set_student
+      @student = Student.find(params[:id])
     end
 
-    private
     def student_params
-      params.require(:student).permit(:name, :email)
+        params.require(:student).permit(:name, :email)
     end
 end
