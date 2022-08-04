@@ -14,19 +14,42 @@
   <ul class="sidenav" id="mobile-demo">
     <li><a href="#">Courses</a></li>
     <li><a href="#">Enrollments </a></li>
-    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+    <li>
+      <a class="dropdown-trigger" href="#!" data-target="dropdown2"
+        >Account<i class="material-icons right">arrow_drop_down</i></a
+      >
+    </li>
   </ul>
-  <nav> 
+  <nav>
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><%= link_to 'Home', root_path%></li>
           <li><%= link_to 'About', about_path%></li>
-          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li>
+            <a class="dropdown-trigger" href="#!" data-target="dropdown1"
+              >Account<i class="material-icons right">arrow_drop_down</i></a
+            >
+          </li>
         </ul>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
       </div>
     </div>
   </nav>
 </header>
+<% flash.each do |k,msg| %>
+<div class="container">
+  <div class="row sign-up-form">
+    <div class="col s12 m12 l12">
+      <div class="card-panel red lighten-2" id="fade-out-target">
+        <span class="white-text">
+          <%= msg %> 
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>

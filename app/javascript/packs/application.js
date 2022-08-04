@@ -22,4 +22,6 @@ import 'materialize-css/dist/js/materialize'
 
 $(function() {
     $(".sidenav").sidenav();
+    $('.dropdown-trigger').dropdown();
+    $("#fade-out-target").fadeOut(4000);
 });

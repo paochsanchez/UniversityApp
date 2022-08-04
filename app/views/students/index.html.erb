@@ -1,0 +1,24 @@
+<h3>Students List</h3>
+<hr>
+<div class="container">
+  <table class="highlight responsive-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @students.each do |student| %> 
+      <tr>
+        <td><%=student.name%></td>
+        <td><%=student.email%></td>
+        <td></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
