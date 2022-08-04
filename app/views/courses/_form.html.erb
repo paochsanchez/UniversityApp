@@ -1,0 +1,25 @@
+<%= render 'shared/errors', obj: @course %>
+<div class="container ">
+  <div class="card">
+    <%= form_for @course do |f|%>
+    <div class="card-panel">
+      <h3 class="header">Add course</h3>
+      <br />
+      <div class="row">
+        <div class="input-field col s3">
+          <%= f.label :short_name %> <%= f.text_field :short_name, placeholder: 'Course short name', autofocus: true %>
+        </div>
+        <div class="input-field col s3">
+          <%= f.label :name %> <%= f.text_field :name, placeholder: 'Course name', autofocus: true %>
+        </div>
+        <div class="input-field col s6">
+          <%= f.label :description %> <%= f.text_field :description, placeholder: 'Course description', autofocus: true %>
+        </div>
+      </div>
+      <div class="row">
+        <%= f.submit "Submit", class: 'btn waves-effect waves-light right' %>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>

@@ -23,26 +23,22 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
 
-    respond_to do |format|
-      if @student.save
-        flash[:notice] = "Welcome to the UniApp #{@student.name}, you have succesfully signed up"
-        redirect_to students_path
-      else
-        render 'new'
-      end
+    if @student.save
+      flash[:notice] = "Welcome to the UniApp #{@student.name}, you have succesfully signed up"
+      redirect_to students_path
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /students/1 or /students/1.json
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        flash[:notice] = "#{@student.name}, you have succesfully updated"
-        redirect_to students_path
+    if @student.update(student_params)
+      flash[:notice] = "#{@student.name}, you have succesfully updated"
+      redirect_to students_path
 
-      else
-        render 'edit'
-      end
+    else
+      render 'edit'
     end
   end
 
